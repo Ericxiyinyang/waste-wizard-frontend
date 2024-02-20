@@ -1,61 +1,80 @@
-//
-//  ContentView.swift
-//  Waste Wizard
-//
-//  Created by Eric Yang on 2024-02-19.
-//
-
 import SwiftUI
-import SwiftData
+
 
 struct ContentView: View {
-    @Environment(\.modelContext) private var modelContext
-    @Query private var items: [Item]
-
     var body: some View {
-        NavigationSplitView {
-            List {
-                ForEach(items) { item in
-                    NavigationLink {
-                        Text("Item at \(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))")
-                    } label: {
-                        Text(item.timestamp, format: Date.FormatStyle(date: .numeric, time: .standard))
+        ZStack {
+            Image("background")
+                .resizable()
+                .scaledToFill()
+                .edgesIgnoringSafeArea(.all)
+                .offset(x: -30)
+            
+            HStack(spacing: 15) {
+                VStack (spacing: -50) {
+                    Button(action: {
+                        print("Button tapped!")
+                    }) {
+                        Text("Learn")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding(.vertical, 12)
+                            .padding(.horizontal, 24)
+                            .background(Color(red: 0, green: 98/255, blue: 39/255))
+                            .cornerRadius(6)
+                        
+                    }
+                    
+                    Button(action: {
+                        print("Button tapped!")
+                    }) {
+                        Text("Learn")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding(.vertical, 12)
+                            .padding(.horizontal, 24)
+                            .background(Color(red: 0, green: 146/255, blue: 58/255))
+                            .cornerRadius(6)
+                        
+                    }
+                    
+                }
+
+                VStack (spacing: -50) {
+                    Button(action: {
+                        print("Button tapped!")
+                    }) {
+                        Text("Scan")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding(.vertical, 12)
+                            .padding(.horizontal, 27)
+                            .background(Color(red: 0, green: 98/255, blue: 39/255))
+                            .cornerRadius(6)
+                        
+                    }
+                    
+                    Button(action: {
+                        print("Button tapped!")
+                    }) {
+                        Text("Scan")
+                            .font(.headline)
+                            .foregroundColor(.white)
+                            .padding(.vertical, 12)
+                            .padding(.horizontal, 27)
+                            .background(Color(red: 0, green: 146/255, blue: 58/255))
+                            .cornerRadius(6)
+                        
                     }
                 }
-                .onDelete(perform: deleteItems)
-            }
-            .toolbar {
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    EditButton()
-                }
-                ToolbarItem {
-                    Button(action: addItem) {
-                        Label("Add Item", systemImage: "plus")
-                    }
-                }
-            }
-        } detail: {
-            Text("Select an item")
-        }
-    }
-
-    private func addItem() {
-        withAnimation {
-            let newItem = Item(timestamp: Date())
-            modelContext.insert(newItem)
-        }
-    }
-
-    private func deleteItems(offsets: IndexSet) {
-        withAnimation {
-            for index in offsets {
-                modelContext.delete(items[index])
             }
         }
     }
 }
 
-#Preview {
-    ContentView()
-        .modelContainer(for: Item.self, inMemory: true)
+
+struct ContentView_Previews: PreviewProvider {
+    static var previews: some View {
+        ContentView()
+    }
 }
