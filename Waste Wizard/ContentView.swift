@@ -3,72 +3,78 @@ import SwiftUI
 
 struct ContentView: View {
     var body: some View {
-        ZStack {
-            Image("background")
-                .resizable()
-                .scaledToFill()
-                .edgesIgnoringSafeArea(.all)
-                .offset(x: -30)
-            
-            HStack(spacing: 15) {
-                VStack (spacing: -50) {
-                    Button(action: {
-                        print("Button tapped!")
-                    }) {
-                        Text("Learn")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding(.vertical, 12)
-                            .padding(.horizontal, 24)
-                            .background(Color(red: 0, green: 98/255, blue: 39/255))
-                            .cornerRadius(6)
+        NavigationView {
+            ZStack {
+                Image("background")
+                    .resizable()
+                    .scaledToFill()
+                    .edgesIgnoringSafeArea(.all)
+                    .offset(x: -30)
+                
+                HStack(spacing: 15) {
+                    VStack (spacing: -50) {
+                        NavigationLink(destination: Learn()) {
+                            Text("Learn")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding(.vertical, 12)
+                                .padding(.horizontal, 24)
+                                .background(Color(red: 0, green: 98/255, blue: 39/255))
+                                .cornerRadius(6)
+                            
+                        }
+                        
+                        NavigationLink(destination: Learn()) {
+                            Text("Learn")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding(.vertical, 12)
+                                .padding(.horizontal, 24)
+                                .background(Color(red: 0, green: 146/255, blue: 58/255))
+                                .cornerRadius(6)
+                            
+                        }
                         
                     }
-                    
-                    Button(action: {
-                        print("Button tapped!")
-                    }) {
-                        Text("Learn")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding(.vertical, 12)
-                            .padding(.horizontal, 24)
-                            .background(Color(red: 0, green: 146/255, blue: 58/255))
-                            .cornerRadius(6)
-                        
-                    }
-                    
-                }
 
-                VStack (spacing: -50) {
-                    Button(action: {
-                        print("Button tapped!")
-                    }) {
-                        Text("Scan")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding(.vertical, 12)
-                            .padding(.horizontal, 27)
-                            .background(Color(red: 0, green: 98/255, blue: 39/255))
-                            .cornerRadius(6)
+                    VStack (spacing: -50) {
+                        NavigationLink(destination: Scan()) {
+                            Text("Scan")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding(.vertical, 12)
+                                .padding(.horizontal, 27)
+                                .background(Color(red: 0, green: 98/255, blue: 39/255))
+                                .cornerRadius(6)
+                            
+                        }
                         
-                    }
-                    
-                    Button(action: {
-                        print("Button tapped!")
-                    }) {
-                        Text("Scan")
-                            .font(.headline)
-                            .foregroundColor(.white)
-                            .padding(.vertical, 12)
-                            .padding(.horizontal, 27)
-                            .background(Color(red: 0, green: 146/255, blue: 58/255))
-                            .cornerRadius(6)
-                        
+                        NavigationLink(destination: Scan()) {
+                            Text("Scan")
+                                .font(.headline)
+                                .foregroundColor(.white)
+                                .padding(.vertical, 12)
+                                .padding(.horizontal, 27)
+                                .background(Color(red: 0, green: 146/255, blue: 58/255))
+                                .cornerRadius(6)
+                            
+                        }
                     }
                 }
             }
         }
+    }
+}
+
+struct Learn: View { // Define another view
+    var body: some View {
+        Text("Learn")
+    }
+}
+
+struct Scan: View { // Define another view
+    var body: some View {
+        Text("Scan")
     }
 }
 
