@@ -66,18 +66,6 @@ struct ContentView: View {
     }
 }
 
-struct Learn: View { // Define another view
-    var body: some View {
-        Text("Learn")
-    }
-}
-
-struct Scan: View { // Define another view
-    var body: some View {
-        Text("Scan")
-    }
-}
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {

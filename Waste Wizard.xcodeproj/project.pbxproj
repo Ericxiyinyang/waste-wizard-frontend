@@ -7,18 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		149E0BD82B85747700B986B5 /* Learn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149E0BD72B85747700B986B5 /* Learn.swift */; };
+		149E0BDA2B8574EE00B986B5 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149E0BD92B8574EE00B986B5 /* Scan.swift */; };
 		F55E241B2B84125700CADB2B /* Waste_WizardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E241A2B84125700CADB2B /* Waste_WizardApp.swift */; };
 		F55E241D2B84125700CADB2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E241C2B84125700CADB2B /* ContentView.swift */; };
-		F55E241F2B84125700CADB2B /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E241E2B84125700CADB2B /* Item.swift */; };
 		F55E24212B84125800CADB2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55E24202B84125800CADB2B /* Assets.xcassets */; };
 		F55E24242B84125800CADB2B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55E24232B84125800CADB2B /* Preview Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		149E0BD72B85747700B986B5 /* Learn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Learn.swift; sourceTree = "<group>"; };
+		149E0BD92B8574EE00B986B5 /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
 		F55E24172B84125700CADB2B /* Waste Wizard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Waste Wizard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F55E241A2B84125700CADB2B /* Waste_WizardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waste_WizardApp.swift; sourceTree = "<group>"; };
 		F55E241C2B84125700CADB2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		F55E241E2B84125700CADB2B /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		F55E24202B84125800CADB2B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F55E24232B84125800CADB2B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F55E24252B84125800CADB2B /* Waste_Wizard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Waste_Wizard.entitlements; sourceTree = "<group>"; };
@@ -55,9 +57,10 @@
 		F55E24192B84125700CADB2B /* Waste Wizard */ = {
 			isa = PBXGroup;
 			children = (
+				149E0BD92B8574EE00B986B5 /* Scan.swift */,
+				149E0BD72B85747700B986B5 /* Learn.swift */,
 				F55E241A2B84125700CADB2B /* Waste_WizardApp.swift */,
 				F55E241C2B84125700CADB2B /* ContentView.swift */,
-				F55E241E2B84125700CADB2B /* Item.swift */,
 				F55E24202B84125800CADB2B /* Assets.xcassets */,
 				F55E24252B84125800CADB2B /* Waste_Wizard.entitlements */,
 				F55E24262B84125800CADB2B /* Info.plist */,
@@ -144,8 +147,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				149E0BD82B85747700B986B5 /* Learn.swift in Sources */,
 				F55E241D2B84125700CADB2B /* ContentView.swift in Sources */,
-				F55E241F2B84125700CADB2B /* Item.swift in Sources */,
+				149E0BDA2B8574EE00B986B5 /* Scan.swift in Sources */,
 				F55E241B2B84125700CADB2B /* Waste_WizardApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
