@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		149E0BD82B85747700B986B5 /* Learn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149E0BD72B85747700B986B5 /* Learn.swift */; };
 		149E0BDA2B8574EE00B986B5 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149E0BD92B8574EE00B986B5 /* Scan.swift */; };
+		F55374862B87EAD4003BA9D8 /* HostedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55374832B87EAD4003BA9D8 /* HostedViewController.swift */; };
+		F55374872B87EAD4003BA9D8 /* TrashDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55374842B87EAD4003BA9D8 /* TrashDetector.swift */; };
+		F55374882B87EAD4003BA9D8 /* yolov8n.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = F55374852B87EAD4003BA9D8 /* yolov8n.mlpackage */; };
 		F55E241B2B84125700CADB2B /* Waste_WizardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E241A2B84125700CADB2B /* Waste_WizardApp.swift */; };
 		F55E241D2B84125700CADB2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E241C2B84125700CADB2B /* ContentView.swift */; };
 		F55E24212B84125800CADB2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55E24202B84125800CADB2B /* Assets.xcassets */; };
@@ -18,6 +21,9 @@
 /* Begin PBXFileReference section */
 		149E0BD72B85747700B986B5 /* Learn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Learn.swift; sourceTree = "<group>"; };
 		149E0BD92B8574EE00B986B5 /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
+		F55374832B87EAD4003BA9D8 /* HostedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostedViewController.swift; sourceTree = "<group>"; };
+		F55374842B87EAD4003BA9D8 /* TrashDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrashDetector.swift; sourceTree = "<group>"; };
+		F55374852B87EAD4003BA9D8 /* yolov8n.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolov8n.mlpackage; sourceTree = "<group>"; };
 		F55E24172B84125700CADB2B /* Waste Wizard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Waste Wizard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F55E241A2B84125700CADB2B /* Waste_WizardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waste_WizardApp.swift; sourceTree = "<group>"; };
 		F55E241C2B84125700CADB2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,6 +65,9 @@
 			children = (
 				149E0BD92B8574EE00B986B5 /* Scan.swift */,
 				149E0BD72B85747700B986B5 /* Learn.swift */,
+				F55374832B87EAD4003BA9D8 /* HostedViewController.swift */,
+				F55374842B87EAD4003BA9D8 /* TrashDetector.swift */,
+				F55374852B87EAD4003BA9D8 /* yolov8n.mlpackage */,
 				F55E241A2B84125700CADB2B /* Waste_WizardApp.swift */,
 				F55E241C2B84125700CADB2B /* ContentView.swift */,
 				F55E24202B84125800CADB2B /* Assets.xcassets */,
@@ -149,7 +158,10 @@
 			files = (
 				149E0BD82B85747700B986B5 /* Learn.swift in Sources */,
 				F55E241D2B84125700CADB2B /* ContentView.swift in Sources */,
+				F55374862B87EAD4003BA9D8 /* HostedViewController.swift in Sources */,
 				149E0BDA2B8574EE00B986B5 /* Scan.swift in Sources */,
+				F55374872B87EAD4003BA9D8 /* TrashDetector.swift in Sources */,
+				F55374882B87EAD4003BA9D8 /* yolov8n.mlpackage in Sources */,
 				F55E241B2B84125700CADB2B /* Waste_WizardApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
