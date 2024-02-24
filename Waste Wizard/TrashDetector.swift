@@ -1,11 +1,13 @@
 import Vision
 import AVFoundation
 import UIKit
+import SwiftUI
+
+public var current_detection = "N/A"
 
 extension ViewController {
-    
     func setupDetector() {
-        let modelURL = Bundle.main.url(forResource: "yolov8n", withExtension: "mlmodelc")
+        let modelURL = Bundle.main.url(forResource: "HOMAN", withExtension: "mlmodelc")
     
         do {
             let visionModel = try VNCoreMLModel(for: MLModel(contentsOf: modelURL!))
@@ -26,22 +28,26 @@ extension ViewController {
     
     func extractDetections(_ results: [VNObservation]) {
         detectionLayer.sublayers = nil
-        
+        var highest_conf: Float = 0.0
         for observation in results where observation is VNRecognizedObjectObservation {
             guard let objectObservation = observation as? VNRecognizedObjectObservation else { continue }
-            if objectObservation.confidence < 0.75{
+            if objectObservation.confidence < highest_conf{
                 continue
             }
             // Transformations
+            highest_conf = objectObservation.confidence
             let topLabelObservation = objectObservation.labels[0]
             let objectBounds = VNImageRectForNormalizedRect(objectObservation.boundingBox, Int(screenRect.size.width), Int(screenRect.size.height))
             let transformedBounds = CGRect(x: objectBounds.minX, y: screenRect.size.height - objectBounds.maxY, width: objectBounds.maxX - objectBounds.minX, height: objectBounds.maxY - objectBounds.minY)
             
-            let boxLayer = self.drawBoundingBox(transformedBounds)
-            let textLayer = self.createTextSubLayerInBounds(transformedBounds, identifier: topLabelObservation.identifier, confidence: topLabelObservation.confidence)
-            boxLayer.addSublayer(textLayer)
-            detectionLayer.addSublayer(boxLayer)
+//            let boxLayer = self.drawBoundingBox(transformedBounds)
+//            let textLayer = self.createTextSubLayerInBounds(transformedBounds, identifier: topLabelObservation.identifier, confidence: topLabelObservation.confidence)
+//            boxLayer.addSublayer(textLayer)
+//            detectionLayer.addSublayer(boxLayer)
+            current_detection = topLabelObservation.identifier
+//            print(current_detection)
         }
+
     }
     
     func setupLayers() {

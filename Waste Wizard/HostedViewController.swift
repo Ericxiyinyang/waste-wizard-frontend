@@ -15,6 +15,7 @@ class  ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDel
     var requests = [VNRequest]()
     var detectionLayer: CALayer! = nil
     
+    
     override func viewDidLoad(){
         checkPermission()
         
@@ -96,6 +97,7 @@ class  ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDel
 }
 
 struct HostedViewController: UIViewControllerRepresentable{
+    
     func makeUIViewController(context: Context) -> UIViewController {
         return ViewController()
     }

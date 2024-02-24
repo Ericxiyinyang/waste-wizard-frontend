@@ -147,3 +147,10 @@ struct Learn: View {
         .background(Color(red: 243/255, green: 243/255, blue: 241/255))
     }
 }
+
+
+struct Learn_Preview: PreviewProvider {
+    static var previews: some View {
+        Learn()
+    }
+}

@@ -8,22 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		149E0BD82B85747700B986B5 /* Learn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149E0BD72B85747700B986B5 /* Learn.swift */; };
-		149E0BDA2B8574EE00B986B5 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149E0BD92B8574EE00B986B5 /* Scan.swift */; };
 		F55374862B87EAD4003BA9D8 /* HostedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55374832B87EAD4003BA9D8 /* HostedViewController.swift */; };
 		F55374872B87EAD4003BA9D8 /* TrashDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55374842B87EAD4003BA9D8 /* TrashDetector.swift */; };
 		F55374882B87EAD4003BA9D8 /* yolov8n.mlpackage in Sources */ = {isa = PBXBuildFile; fileRef = F55374852B87EAD4003BA9D8 /* yolov8n.mlpackage */; };
+		F553748A2B87F3C9003BA9D8 /* Scan.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55374892B87F3C9003BA9D8 /* Scan.swift */; };
 		F55E241B2B84125700CADB2B /* Waste_WizardApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E241A2B84125700CADB2B /* Waste_WizardApp.swift */; };
 		F55E241D2B84125700CADB2B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55E241C2B84125700CADB2B /* ContentView.swift */; };
 		F55E24212B84125800CADB2B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55E24202B84125800CADB2B /* Assets.xcassets */; };
 		F55E24242B84125800CADB2B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F55E24232B84125800CADB2B /* Preview Assets.xcassets */; };
+		F5C432CB2B894BBB00125DBE /* Montserrat-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5C432C92B894BBB00125DBE /* Montserrat-VariableFont_wght.ttf */; };
+		F5C432CC2B894BBB00125DBE /* Montserrat-Italic-VariableFont_wght.ttf in Resources */ = {isa = PBXBuildFile; fileRef = F5C432CA2B894BBB00125DBE /* Montserrat-Italic-VariableFont_wght.ttf */; };
+		F5C432CE2B896D3600125DBE /* HOMAN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F5C432CD2B896D3600125DBE /* HOMAN.mlmodel */; };
+		F5C432D62B8979D100125DBE /* ScanDialogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C432D52B8979D100125DBE /* ScanDialogue.swift */; };
+		F5C432DA2B89944E00125DBE /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C432D92B89944E00125DBE /* InfoView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		149E0BD72B85747700B986B5 /* Learn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Learn.swift; sourceTree = "<group>"; };
-		149E0BD92B8574EE00B986B5 /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
 		F55374832B87EAD4003BA9D8 /* HostedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HostedViewController.swift; sourceTree = "<group>"; };
 		F55374842B87EAD4003BA9D8 /* TrashDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrashDetector.swift; sourceTree = "<group>"; };
 		F55374852B87EAD4003BA9D8 /* yolov8n.mlpackage */ = {isa = PBXFileReference; lastKnownFileType = folder.mlpackage; path = yolov8n.mlpackage; sourceTree = "<group>"; };
+		F55374892B87F3C9003BA9D8 /* Scan.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Scan.swift; sourceTree = "<group>"; };
 		F55E24172B84125700CADB2B /* Waste Wizard.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Waste Wizard.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		F55E241A2B84125700CADB2B /* Waste_WizardApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Waste_WizardApp.swift; sourceTree = "<group>"; };
 		F55E241C2B84125700CADB2B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -31,6 +36,11 @@
 		F55E24232B84125800CADB2B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F55E24252B84125800CADB2B /* Waste_Wizard.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Waste_Wizard.entitlements; sourceTree = "<group>"; };
 		F55E24262B84125800CADB2B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F5C432C92B894BBB00125DBE /* Montserrat-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		F5C432CA2B894BBB00125DBE /* Montserrat-Italic-VariableFont_wght.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Montserrat-Italic-VariableFont_wght.ttf"; sourceTree = "<group>"; };
+		F5C432CD2B896D3600125DBE /* HOMAN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HOMAN.mlmodel; sourceTree = "<group>"; };
+		F5C432D52B8979D100125DBE /* ScanDialogue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDialogue.swift; sourceTree = "<group>"; };
+		F5C432D92B89944E00125DBE /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,10 +73,13 @@
 		F55E24192B84125700CADB2B /* Waste Wizard */ = {
 			isa = PBXGroup;
 			children = (
-				149E0BD92B8574EE00B986B5 /* Scan.swift */,
+				F5C432CA2B894BBB00125DBE /* Montserrat-Italic-VariableFont_wght.ttf */,
+				F5C432C92B894BBB00125DBE /* Montserrat-VariableFont_wght.ttf */,
 				149E0BD72B85747700B986B5 /* Learn.swift */,
+				F55374892B87F3C9003BA9D8 /* Scan.swift */,
 				F55374832B87EAD4003BA9D8 /* HostedViewController.swift */,
 				F55374842B87EAD4003BA9D8 /* TrashDetector.swift */,
+				F5C432CD2B896D3600125DBE /* HOMAN.mlmodel */,
 				F55374852B87EAD4003BA9D8 /* yolov8n.mlpackage */,
 				F55E241A2B84125700CADB2B /* Waste_WizardApp.swift */,
 				F55E241C2B84125700CADB2B /* ContentView.swift */,
@@ -74,6 +87,8 @@
 				F55E24252B84125800CADB2B /* Waste_Wizard.entitlements */,
 				F55E24262B84125800CADB2B /* Info.plist */,
 				F55E24222B84125800CADB2B /* Preview Content */,
+				F5C432D52B8979D100125DBE /* ScanDialogue.swift */,
+				F5C432D92B89944E00125DBE /* InfoView.swift */,
 			);
 			path = "Waste Wizard";
 			sourceTree = "<group>";
@@ -144,7 +159,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5C432CC2B894BBB00125DBE /* Montserrat-Italic-VariableFont_wght.ttf in Resources */,
 				F55E24242B84125800CADB2B /* Preview Assets.xcassets in Resources */,
+				F5C432CB2B894BBB00125DBE /* Montserrat-VariableFont_wght.ttf in Resources */,
 				F55E24212B84125800CADB2B /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -156,12 +173,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F5C432D62B8979D100125DBE /* ScanDialogue.swift in Sources */,
+				F5C432CE2B896D3600125DBE /* HOMAN.mlmodel in Sources */,
 				149E0BD82B85747700B986B5 /* Learn.swift in Sources */,
 				F55E241D2B84125700CADB2B /* ContentView.swift in Sources */,
 				F55374862B87EAD4003BA9D8 /* HostedViewController.swift in Sources */,
-				149E0BDA2B8574EE00B986B5 /* Scan.swift in Sources */,
 				F55374872B87EAD4003BA9D8 /* TrashDetector.swift in Sources */,
 				F55374882B87EAD4003BA9D8 /* yolov8n.mlpackage in Sources */,
+				F553748A2B87F3C9003BA9D8 /* Scan.swift in Sources */,
+				F5C432DA2B89944E00125DBE /* InfoView.swift in Sources */,
 				F55E241B2B84125700CADB2B /* Waste_WizardApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -301,11 +321,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Waste Wizard/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "App uses camera to detect trash";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -332,11 +353,12 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "Waste Wizard/Info.plist";
+				INFOPLIST_KEY_NSCameraUsageDescription = "App uses camera to detect trash";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
