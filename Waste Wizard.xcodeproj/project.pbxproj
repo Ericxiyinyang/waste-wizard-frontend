@@ -21,6 +21,7 @@
 		F5C432CE2B896D3600125DBE /* HOMAN.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F5C432CD2B896D3600125DBE /* HOMAN.mlmodel */; };
 		F5C432D62B8979D100125DBE /* ScanDialogue.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C432D52B8979D100125DBE /* ScanDialogue.swift */; };
 		F5C432DA2B89944E00125DBE /* InfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F5C432D92B89944E00125DBE /* InfoView.swift */; };
+		F5C432DC2B8C545C00125DBE /* HOMAN2.1.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = F5C432DB2B8C545C00125DBE /* HOMAN2.1.mlmodel */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		F5C432CD2B896D3600125DBE /* HOMAN.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HOMAN.mlmodel; sourceTree = "<group>"; };
 		F5C432D52B8979D100125DBE /* ScanDialogue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanDialogue.swift; sourceTree = "<group>"; };
 		F5C432D92B89944E00125DBE /* InfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoView.swift; sourceTree = "<group>"; };
+		F5C432DB2B8C545C00125DBE /* HOMAN2.1.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = HOMAN2.1.mlmodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 				F55374892B87F3C9003BA9D8 /* Scan.swift */,
 				F55374832B87EAD4003BA9D8 /* HostedViewController.swift */,
 				F55374842B87EAD4003BA9D8 /* TrashDetector.swift */,
+				F5C432DB2B8C545C00125DBE /* HOMAN2.1.mlmodel */,
 				F5C432CD2B896D3600125DBE /* HOMAN.mlmodel */,
 				F55374852B87EAD4003BA9D8 /* yolov8n.mlpackage */,
 				F55E241A2B84125700CADB2B /* Waste_WizardApp.swift */,
@@ -183,6 +186,7 @@
 				F553748A2B87F3C9003BA9D8 /* Scan.swift in Sources */,
 				F5C432DA2B89944E00125DBE /* InfoView.swift in Sources */,
 				F55E241B2B84125700CADB2B /* Waste_WizardApp.swift in Sources */,
+				F5C432DC2B8C545C00125DBE /* HOMAN2.1.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

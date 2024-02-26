@@ -7,7 +7,7 @@ public var current_detection = "N/A"
 
 extension ViewController {
     func setupDetector() {
-        let modelURL = Bundle.main.url(forResource: "HOMAN", withExtension: "mlmodelc")
+        let modelURL = Bundle.main.url(forResource: "HOMAN2.1", withExtension: "mlmodelc")
     
         do {
             let visionModel = try VNCoreMLModel(for: MLModel(contentsOf: modelURL!))
