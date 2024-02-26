@@ -25,17 +25,18 @@ struct ScanDialogue: View {
             VStack {
                 Text(title)
                     .font(.system(size: 30, weight: .bold))
-                    .bold()
+                    .foregroundColor(Color(red: 0, green: 146/255, blue: 58/255))
                     .padding(2)
 
                 Text(message)
-                    .font(.system(size: 29))
+                    .font(.system(size: 20))
+                    .foregroundColor(.black)
                     .frame(minWidth: 100, maxWidth: 300)
                 Spacer(minLength: 20)
-                VStack (spacing: -73) {
+                VStack (spacing: -70) {
                     NavigationLink(destination: Learn()) {
                         Text("Send")
-                            .font(.system(size: 35, weight: .bold))
+                            .font(.system(size: 30, weight: .bold))
                             .foregroundColor(.white)
                             .padding(.vertical, 12)
                             .padding(.horizontal, 110)
@@ -46,7 +47,7 @@ struct ScanDialogue: View {
                     
                     NavigationLink(destination: Learn()) {
                         Text("Send")
-                            .font(.system(size: 35, weight: .bold))
+                            .font(.system(size: 30, weight: .bold))
                             .foregroundColor(.white)
                             .padding(.vertical, 12)
                             .padding(.horizontal, 110)

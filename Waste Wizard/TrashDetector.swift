@@ -34,18 +34,18 @@ extension ViewController {
             if objectObservation.confidence < highest_conf{
                 continue
             }
-            // Transformations
             highest_conf = objectObservation.confidence
             let topLabelObservation = objectObservation.labels[0]
-            let objectBounds = VNImageRectForNormalizedRect(objectObservation.boundingBox, Int(screenRect.size.width), Int(screenRect.size.height))
-            let transformedBounds = CGRect(x: objectBounds.minX, y: screenRect.size.height - objectBounds.maxY, width: objectBounds.maxX - objectBounds.minX, height: objectBounds.maxY - objectBounds.minY)
-            
+//            let objectBounds = VNImageRectForNormalizedRect(objectObservation.boundingBox, Int(screenRect.size.width), Int(screenRect.size.height))
+//            let transformedBounds = CGRect(x: objectBounds.minX, y: screenRect.size.height - objectBounds.maxY, width: objectBounds.maxX - objectBounds.minX, height: objectBounds.maxY - objectBounds.minY)
+//            
 //            let boxLayer = self.drawBoundingBox(transformedBounds)
 //            let textLayer = self.createTextSubLayerInBounds(transformedBounds, identifier: topLabelObservation.identifier, confidence: topLabelObservation.confidence)
 //            boxLayer.addSublayer(textLayer)
 //            detectionLayer.addSublayer(boxLayer)
             current_detection = topLabelObservation.identifier
-//            print(current_detection)
+//            Scan().running_lab = topLabelObservation.identifier
+            print(current_detection)
         }
 
     }

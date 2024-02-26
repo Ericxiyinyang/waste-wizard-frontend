@@ -2,6 +2,7 @@ import SwiftUI
 import SwiftData
 
 struct Learn: View {
+    @Environment(\.dismiss) private var dismiss
     var body: some View {
         VStack{
             Rectangle()
@@ -145,6 +146,20 @@ struct Learn: View {
             .offset(y: -90)
         }
         .background(Color(red: 243/255, green: 243/255, blue: 241/255))
+        .toolbar {
+            ToolbarItem(placement: .navigationBarLeading) {
+                Button {
+                    dismiss()
+                } label: {
+                    HStack {
+                        Image(systemName: "chevron.backward")
+                        Text("Go Back")
+                            .font(.system(size: 20, weight: .medium))
+                    }
+                    .foregroundColor(.white)
+                }
+            }
+        }
     }
 }
 
