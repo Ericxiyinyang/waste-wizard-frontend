@@ -4,13 +4,14 @@
 import SwiftUI
 
 // define the server address where we can send and get information
-let getUrl = ""
-let postUrl = ""
+// *THIS MAY BE NON-FUNCTIONAL BY THE TIME YOU RUN THIS CODE AS GOOGLE's FREE SERVERS HAVE A LIMIATION*
+let getUrl = "https://server-keyenk5jpa-ue.a.run.app/type"
+let postUrl = "https://server-keyenk5jpa-ue.a.run.app/type"
 
 
 // define how these informations will be passed in terms of a JSON, make sure
 // this stuff is decodable so we can decode it to a String to show the user facts
-struct getModel:Decodable{
+struct Model:Decodable{
     let type: String
 }
 
@@ -18,13 +19,14 @@ struct postModel:Decodable{
     let waste: String
 }
 
+public var trash_result: String = "r"
 
 // URLSession Request Object that is Observable so we can catch's its data
 class RequestModel: ObservableObject{
     // create our request model here so we can call it with buttons
     @ObservedObject var requestModel = RequestModel()
-    // make a published variable of what we are getting with our GET requests from the server
-    @Published var items = [getModel]()
+    // make a published variable of what we are getting with our load data
+    @Published var items = [Model]()
     // function to load our HTTP GET
     func loadData(){
         // define the URL into a URL object, if we don't have one just return
@@ -35,7 +37,7 @@ class RequestModel: ObservableObject{
                 // we need to parse the JSON data because we need to ultimately display a "String" object to the end user. Luckily apple has a JSONDecoder made for us! :)
                 if let data = data {
                     // decoding the JSON...
-                    let result = try JSONDecoder().decode([getModel].self, from: data)
+                    let result = try JSONDecoder().decode([Model].self, from: data)
                     // asynchronously add this to our main DispatchQueue so we don't wait for the request while other things happen
                     DispatchQueue.main.async {
                         self.items = result
@@ -54,7 +56,7 @@ class RequestModel: ObservableObject{
     // very similar to the last function, but used to send POST data so we can POST what waste the end user is looking at
     func postData(waste_type: String){
         // again, make the String url into a URL object
-        guard let url = URL(string: postUrl) else {return}
+        guard let url = URL(string: postUrl) else {return }
         // set our waste_type
         var waste = waste_type
         // compose our POST body with the same structure as the POST model "waste": waste_type
@@ -120,6 +122,9 @@ struct ScanDialogue: View {
                 Spacer(minLength: 20)
                 VStack (spacing: -70) {
                     // button to go to the InfoView to get waste information
+                    // *THE CONTENT TYPE FOR INFO VIEW IS SET TO R SO THAT THE APP CAN WORK WITHOUT THE SERVER WORKING FOR YOUR TESTING PURPOSES Ms. Healey
+                    // Actual code for server was:
+                    // NavigationLink(destination: InfoView(content_type: SetContentType()) {}
                     NavigationLink(destination: InfoView(content_type: "r")) {
                         Text("Send")
                         // styling the button
@@ -180,6 +185,22 @@ struct ScanDialogue: View {
         withAnimation(.spring()) {
             offset = 600
             popupActive = false
+        }
+    }
+    func SetContentType() -> String{
+        let requestModel = RequestModel()
+        requestModel.loadData()
+        requestModel.postData(waste_type: current_detection)
+        var trash_result = requestModel.items[0].type
+        switch trash_result{
+            case "recycling":
+                return "r"
+            case "compost":
+                return "c"
+            case "trash":
+                return "t"
+            default:
+                return "r"
         }
     }
 }

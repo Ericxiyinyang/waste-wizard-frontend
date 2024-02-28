@@ -38,7 +38,7 @@ struct InfoView: View {
                                 .frame(height: 300)
                                 .ignoresSafeArea()
                                 .foregroundColor(.black)
-                            Text("Throw This Away.")
+                            Text("Throw This.")
                         default:
                             Text("Throw This Away.")
                     }
@@ -77,5 +77,5 @@ struct InfoView: View {
 //again..previews
 
 #Preview {
-    InfoView(content_type: "r")
+    InfoView(content_type: "t")
 }
