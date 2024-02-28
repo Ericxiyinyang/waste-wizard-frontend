@@ -5,6 +5,7 @@
  
  ChatGPT was used to generate recycling information.
  
+ Recycling information was generated with ChatGPT with specific prompts to what information we wanted to convey. In the future, we hope to invest more time into creating the educational content. However, because of the limited time for this project, priority was given to code functionality rather than content.
  */
 
 import SwiftUI
