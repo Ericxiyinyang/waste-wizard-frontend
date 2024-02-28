@@ -1,21 +1,38 @@
+// Eric
+// On my honor I have not recieved any unauthorized aid
+// Sources: How to build a Camera App: Apple Dev Docs-
+// https://developer.apple.com/documentation/avfoundation/capture_setup/avcam_building_a_camera_app
+// this is where we code the AVFoundation Camera Feed w/o the AI model
+// import Foundation and UIKit because AVFoundation does not support SwiftUI
+
 import Foundation
 import UIKit
 import SwiftUI
 import AVFoundation
 import Vision
 
+
+// setup a UIkit ViewController that uses AVFoundation capturing
 class  ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDelegate{
+    // init a new AVFoundation capture session
     private let captureSession = AVCaptureSession()
+    // var for if we have cam perms from user
     private var permissionGranted = false
+    // image dispatch queue
     private let sessionQueue = DispatchQueue(label: "sessionQueue")
+    // our camera preview layer that lets us display what the camera sees
     private var previewLayer = AVCaptureVideoPreviewLayer()
+    // screen rectange for the preview layer to be in
     var screenRect: CGRect! = nil
     
+    // store our AVFoundation video output as well
     private var videoOutput = AVCaptureVideoDataOutput()
+    // initialize requests for our Vision Model
     var requests = [VNRequest]()
+    // detection layer for the ML model
     var detectionLayer: CALayer! = nil
     
-    
+    // we override the default viewDidLoad function 
     override func viewDidLoad(){
         checkPermission()
         
@@ -23,11 +40,11 @@ class  ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDel
             [unowned self] in
             guard permissionGranted else { return }
             self.setupCaptureSession()
-            self.setupLayers()
             self.setupDetector()
             self.captureSession.startRunning()
         }
     }
+    
     
     func checkPermission() {
         switch AVCaptureDevice.authorizationStatus(for: .video) {
@@ -55,9 +72,6 @@ class  ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDel
         default:
             break
         }
-        
-        //obj detection
-        updateLayers()
     }
     
     func requestPermission() {
@@ -96,7 +110,7 @@ class  ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDel
     }
 }
 
-struct HostedViewController: UIViewControllerRepresentable{
+struct CameraView: UIViewControllerRepresentable{
     
     func makeUIViewController(context: Context) -> UIViewController {
         return ViewController()
