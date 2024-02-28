@@ -34,8 +34,9 @@ class  ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDel
     
     // we override the default viewDidLoad function 
     override func viewDidLoad(){
+        // check for camera perms
         checkPermission()
-        
+        // create an asynchronous queue that runs our session and AI setups
         sessionQueue.async {
             [unowned self] in
             guard permissionGranted else { return }
@@ -45,9 +46,11 @@ class  ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDel
         }
     }
     
-    
+    // checks the user for camera perms
     func checkPermission() {
+        // variable in the switch is if the user has given video perms or no
         switch AVCaptureDevice.authorizationStatus(for: .video) {
+            // if we get access set this to true
         case .authorized:
             permissionGranted = true
         case .notDetermined:
@@ -57,9 +60,11 @@ class  ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDel
         }
     }
     
+    // override the willTransition function to keep the video in portrait mode all the time
     override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator){
         screenRect = UIScreen.main.bounds
         self.previewLayer.frame = CGRect(x: 0, y: 0, width: screenRect.size.width, height: screenRect.size.height)
+        // here we are saying that no matter what orientation the phone is in we set the video to portrait
         switch UIDevice.current.orientation{
         case UIDeviceOrientation.portraitUpsideDown:
             self.previewLayer.connection?.videoOrientation = .portrait
@@ -74,42 +79,47 @@ class  ViewController: UIViewController, AVCaptureVideoDataOutputSampleBufferDel
         }
     }
     
+    // ask for camera permissions
     func requestPermission() {
+        // stop the queue before b/c its gonna crash if we get rejected perms
         sessionQueue.suspend()
+        // ask for camera perms using AVCaptureDevice
         AVCaptureDevice.requestAccess(for: .video, completionHandler: {[unowned self] granted in
             self.permissionGranted = granted
             self.sessionQueue.resume()
         })
     }
     
-//    private let shutterButton: UIButton = {
-//        let button = UIButton(frame: CGRect(x: 0, y: 0, width: 200, height: 200))
-//        button.layer.cornerRadius = 100
-//        button.layer.borderWidth = 10
-//        button.layer.borderColor = UIColor.white.cgColor
-//        return button
-//    }()
-    
+    // <-------- portion heavily references apple's AVFoundation documentation----------->
+    // setting up the camera session with AVFoundation
     func setupCaptureSession() {
+        // choose the camera to be the Wide angle camera (most iphones have this) in the back
         guard let videoDevice = AVCaptureDevice.default(.builtInWideAngleCamera, for: .video, position: .back) else {return}
+        // set the video input to the AVCaptureDeviceInput so we get the video
         guard let videoDeviceInput = try? AVCaptureDeviceInput(device: videoDevice) else {return}
+        // check if we can add the input to the captureSession
         guard captureSession.canAddInput(videoDeviceInput) else {return}
+        // add the input to the AVCaptureSession
         captureSession.addInput(videoDeviceInput)
+        // using UIkit display the video feed
         screenRect = UIScreen.main.bounds
         previewLayer = AVCaptureVideoPreviewLayer(session: captureSession)
+        // setting the UIkit frame
         previewLayer.frame = CGRect(x: 0, y: 0, width: screenRect.size.width, height: screenRect.size.height)
         previewLayer.videoGravity = AVLayerVideoGravity.resizeAspectFill
         previewLayer.connection?.videoOrientation = .portrait
         previewLayer.zPosition = 0
-//        shutterButton.center = CGPoint(x: view.frame.size.width/2, y: view.frame.size.height - 200)
-        //obj detection
+        // setSampleBufferDelegate to delegate the image buffer
         videoOutput.setSampleBufferDelegate(self, queue: DispatchQueue(label: "sampleBufferQueue"))
+        // add the videoOutput to the Capture session
         captureSession.addOutput(videoOutput)
         videoOutput.connection(with: .video)?.videoOrientation = .portrait
+        // add in the model's preview layer
         DispatchQueue.main.async { [weak self] in self!.view.layer.addSublayer(self!.previewLayer)}
     }
 }
 
+// Camera view features a ViewController and it has an update mtd to update that view controller
 struct CameraView: UIViewControllerRepresentable{
     
     func makeUIViewController(context: Context) -> UIViewController {
@@ -119,3 +129,5 @@ struct CameraView: UIViewControllerRepresentable{
     func updateUIViewController(_ uiViewController: UIViewController, context: Context) {
     }
 }
+
+// <--------- End of portion heavily referencing apple's AVFoundation docs ------------->

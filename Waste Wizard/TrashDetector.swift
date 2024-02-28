@@ -1,4 +1,5 @@
 // Eric
+// On my honor I have not recieved any unauthorized aid
 // This is where we will write Swift to run our custom trained YOLO model
 // to do this we need to import these libraries, as well as UIKit since AVFoundation does not work with SwiftUI yet...
 import Vision

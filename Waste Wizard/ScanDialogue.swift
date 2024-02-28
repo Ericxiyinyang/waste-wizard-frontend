@@ -1,10 +1,6 @@
-//
-//  ScanDialogue.swift
-//  Waste Wizard
-//
-//  Created by Eric Yang on 2024-02-23.
-//
-
+//Eric
+// On my honor I have not recieved any unauthorized aid
+// this is our popup
 import SwiftUI
 
 // define the server address where we can send and get information
@@ -90,22 +86,28 @@ class RequestModel: ObservableObject{
 }
 
 
+// define our popup window
 struct ScanDialogue: View {
+    // set variable for how much we want off set the window when it is off
     @State private var offset: CGFloat = 600
     @Binding var popupActive: Bool
+    // initialize the object with the popup's contents
     let title: String
     let buttonTitle: String
     let message: String
     let send_content: String
+    // the body view of the popup
     var body: some View {
         ZStack {
+            // make everything behind it darker
             Color(.black)
                 .opacity(0.3)
                 .onTapGesture {
                     close()
                 }
 
-            VStack {
+            VStack() {
+                // Add the title, messages as a Text()
                 Text(title)
                     .font(.system(size: 30, weight: .bold))
                     .foregroundColor(Color(red: 0, green: 146/255, blue: 58/255))
@@ -117,8 +119,10 @@ struct ScanDialogue: View {
                     .frame(minWidth: 100, maxWidth: 300)
                 Spacer(minLength: 20)
                 VStack (spacing: -70) {
-                    NavigationLink(destination: Learn()) {
+                    // button to go to the InfoView to get waste information
+                    NavigationLink(destination: InfoView(content_type: "r")) {
                         Text("Send")
+                        // styling the button
                             .font(.system(size: 30, weight: .bold))
                             .foregroundColor(.white)
                             .padding(.vertical, 12)
@@ -127,7 +131,7 @@ struct ScanDialogue: View {
                             .cornerRadius(15)
                         
                     }
-                    
+                    // fake 3D effect
                     NavigationLink(destination: InfoView(content_type: "r")) {
                         Text("Send")
                             .font(.system(size: 30, weight: .bold))
@@ -140,12 +144,15 @@ struct ScanDialogue: View {
                     }
                 }
             }
+            // again..a lot of styling
             .fixedSize(horizontal: false, vertical: true)
             .padding()
             .background(.white)
             .clipShape(RoundedRectangle(cornerRadius: 20))
+            // cross mark to close the popup
             .overlay(alignment: .topTrailing) {
                 Button {
+                    // when the x is pressed close the popup
                     close()
                 } label: {
                     Image(systemName: "xmark")
@@ -159,6 +166,7 @@ struct ScanDialogue: View {
             .padding(30)
             .offset(x: 0, y: offset)
             .onAppear {
+                // animate the popup up with .spring() keyframes
                 withAnimation(.spring()) {
                     offset = 0
                 }
@@ -166,8 +174,9 @@ struct ScanDialogue: View {
         }
         .ignoresSafeArea()
     }
-
+    // function to close the popup
     func close() {
+        // animate the popup down with .spring() keyframes
         withAnimation(.spring()) {
             offset = 600
             popupActive = false
@@ -175,6 +184,7 @@ struct ScanDialogue: View {
     }
 }
 
+// again just preview testing here
 #Preview {
     ScanDialogue(popupActive: .constant(true), title: "Are You Sure?", buttonTitle: "Yes", message: "You've scanned in a plastic bottle", send_content: "TEST")
 }
