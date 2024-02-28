@@ -1,24 +1,38 @@
+// Eric
+// On my honor I have not recieved any unauthorized aid
+// This is where we will write Swift to run our custom trained YOLO model
+// to do this we need to import these libraries, as well as UIKit since AVFoundation does not work with SwiftUI yet...
 import Vision
 import AVFoundation
 import UIKit
 import SwiftUI
 
+// make a public variable accessable everywhere about what the user is looking at right now
 public var current_detection = "N/A"
 
+// Using the concepts of inheritance we will now extend the ViewController in the Camera View to do ML
 extension ViewController {
+    // this sets up the YOLO model
     func setupDetector() {
+        // find path to our CoreML model
         let modelURL = Bundle.main.url(forResource: "HOMAN2.1", withExtension: "mlmodelc")
-    
+        
+        // load int he model, objects recognized rn, and its requests
         do {
             let visionModel = try VNCoreMLModel(for: MLModel(contentsOf: modelURL!))
+            // it's nice that we can make a custom completionHandler with CoreML so we can check when the AI is doe
             let recognitions = VNCoreMLRequest(model: visionModel, completionHandler: detectionDidComplete)
             self.requests = [recognitions]
         } catch let error {
+            // debugging
             print(error)
         }
     }
     
+    // completion handler mtd
     func detectionDidComplete(request: VNRequest, error: Error?) {
+        // Put in our Async queue again because we do not want to wait for the model to do other things
+        // once it's done making detections, extract the detections over to results
         DispatchQueue.main.async(execute: {
             if let results = request.results {
                 self.extractDetections(results)
@@ -26,77 +40,39 @@ extension ViewController {
         })
     }
     
+    // functons to extract detections every frame, b/c of our special need, we need to write a filtering algorithm that gets the highest confidence object
     func extractDetections(_ results: [VNObservation]) {
-        detectionLayer.sublayers = nil
+        // set our detection sublayers incase we want bounding boxes in future
+        // initialize a counting Float to keep track of the highest confidence in this frame
         var highest_conf: Float = 0.0
+        // for all the observations
         for observation in results where observation is VNRecognizedObjectObservation {
             guard let objectObservation = observation as? VNRecognizedObjectObservation else { continue }
+            // if the current observation's confidence is lower than our highest confidence, discard the recognition
             if objectObservation.confidence < highest_conf{
                 continue
             }
+            // if it is higher, we set the highest confidence values of this frame to this object, and set the detection to this object as well
             highest_conf = objectObservation.confidence
             let topLabelObservation = objectObservation.labels[0]
-//            let objectBounds = VNImageRectForNormalizedRect(objectObservation.boundingBox, Int(screenRect.size.width), Int(screenRect.size.height))
-//            let transformedBounds = CGRect(x: objectBounds.minX, y: screenRect.size.height - objectBounds.maxY, width: objectBounds.maxX - objectBounds.minX, height: objectBounds.maxY - objectBounds.minY)
-//            
-//            let boxLayer = self.drawBoundingBox(transformedBounds)
-//            let textLayer = self.createTextSubLayerInBounds(transformedBounds, identifier: topLabelObservation.identifier, confidence: topLabelObservation.confidence)
-//            boxLayer.addSublayer(textLayer)
-//            detectionLayer.addSublayer(boxLayer)
             current_detection = topLabelObservation.identifier
-//            Scan().running_lab = topLabelObservation.identifier
+            // print for ez debugging on macbook of what the model sees
             print(current_detection)
         }
 
     }
     
-    func setupLayers() {
-        detectionLayer = CALayer()
-        detectionLayer.frame = CGRect(x: 0, y: 0, width: screenRect.size.width, height: screenRect.size.height)
-        detectionLayer.zPosition = 1
-        self.view.layer.addSublayer(detectionLayer)
-    }
-    
-    func updateLayers() {
-        detectionLayer?.frame = CGRect(x: 0, y: 0, width: screenRect.size.width, height: screenRect.size.height)
-    }
-    
-    func drawBoundingBox(_ bounds: CGRect) -> CALayer {
-        let shapeLayer = CALayer()
-        shapeLayer.bounds = bounds
-        shapeLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
-        shapeLayer.name = "Found Object"
-        shapeLayer.backgroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.275, 1, 0.765, 0.4])
-        shapeLayer.cornerRadius = 7
-        shapeLayer.borderColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [1, 1, 1, 1])
-        shapeLayer.borderWidth = 2
-        return shapeLayer
-    }
-    
-    func createTextSubLayerInBounds(_ bounds: CGRect, identifier: String, confidence: VNConfidence) -> CATextLayer {
-        let textLayer = CATextLayer()
-        textLayer.name = "Object Label"
-        let formattedString = NSMutableAttributedString(string: String(format: "\(identifier)\nConfidence:  %.2f", confidence))
-        let largeFont = UIFont(name: "Helvetica", size: 24.0)!
-        formattedString.addAttributes([NSAttributedString.Key.font: largeFont], range: NSRange(location: 0, length: identifier.count))
-        textLayer.string = formattedString
-        textLayer.bounds = CGRect(x: 0, y: 0, width: bounds.size.height - 10, height: bounds.size.width - 10)
-        textLayer.position = CGPoint(x: bounds.midX, y: bounds.midY)
-        textLayer.shadowOpacity = 0.7
-        textLayer.shadowOffset = CGSize(width: 2, height: 2)
-        textLayer.foregroundColor = CGColor(colorSpace: CGColorSpaceCreateDeviceRGB(), components: [0.0, 0.0, 0.0, 1.0])
-        textLayer.contentsScale = 2.0 // retina rendering
-        textLayer.setAffineTransform(CGAffineTransform(rotationAngle: CGFloat(.pi / 2.0)).scaledBy(x: 1.0, y: 1.0))
-        return textLayer
-    }
-    
+    // this is what ties it all together, we take what AVFoundation sees in the current frame, and then set this over to Apple's VNImageRequestHandler to get our results
     func captureOutput(_ output: AVCaptureOutput, didOutput sampleBuffer: CMSampleBuffer, from connection: AVCaptureConnection) {
+        // get the pixelBuffer of the current frame
         guard let pixelBuffer = CMSampleBufferGetImageBuffer(sampleBuffer) else { return }
-        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .up, options: [:]) // Create handler to perform request on the buffer
-
+        // input this buffer over to the request handler
+        let imageRequestHandler = VNImageRequestHandler(cvPixelBuffer: pixelBuffer, orientation: .up, options: [:])
+        // schdule the request!
         do {
-            try imageRequestHandler.perform(self.requests) // Schedules vision requests to be performed
+            try imageRequestHandler.perform(self.requests)
         } catch {
+            // debugging
             print(error)
         }
     }

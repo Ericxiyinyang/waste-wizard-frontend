@@ -427,6 +427,7 @@ struct Learn: View {
                 }
             }
         }
+        .navigationBarBackButtonHidden(true)
     }
 }
 
