@@ -132,8 +132,7 @@ struct Learn: View {
                             VStack {
                                 Text("What is a benefit of recycling?")
                                 Button("A) Recycling has no impact.") {
-                                    // Update quiz score
-                                    self.quizScore1 += 1
+                                    // Incorrect Answer
                                 }
                                 .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
                                 .bold()
@@ -141,7 +140,8 @@ struct Learn: View {
                                 .padding(.horizontal, 10)
                                 
                                 Button("B) Recycling helps preserve ecosystems.") {
-                                    // Incorrect answer
+                                    // Correct Answer
+                                    self.quizScore1 += 1
                                 }
                                 .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
                                 .bold()
