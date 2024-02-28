@@ -1,20 +1,13 @@
-import SwiftUI
+/*
+ Ann Song
+ 2/28
+ On my honor I have neither given nor received unauthorized aid.
+ 
+ ChatGPT was used to generate recycling information.
+ 
+ */
 
-struct RecyclingTipView: View {
-    let tip: String
-    
-    var body: some View {
-        VStack {
-            Text("Recycling Tip")
-                .font(.title2)
-                .bold()
-                .foregroundColor(Color(red: 73/255, green: 175/255, blue: 114/255))
-            Text(tip)
-                .padding(.horizontal, 20)
-                .padding(.vertical, 5)
-        }
-    }
-}
+import SwiftUI
 
 struct Learn: View {
     @Environment(\.dismiss) private var dismiss
@@ -23,28 +16,48 @@ struct Learn: View {
     @State private var showModal1 = false
     @State private var showModal2 = false
     @State private var showModal3 = false
-    // Add more @State variables for additional modals if needed
+    @State private var showModal4 = false
+    @State private var showModal5 = false
+    @State private var showModal6 = false
+    @State private var showModal7 = false
     
     // Quiz scores
     @State private var quizScore1 = 0
     @State private var quizScore2 = 0
     @State private var quizScore3 = 0
+    @State private var quizScore4 = 0
+    @State private var quizScore5 = 0
+    @State private var quizScore6 = 0
+    @State private var quizScore7 = 0
     
     var body: some View {
         VStack {
-            Rectangle()
-                .fill(Color(red: 0, green: 146/255, blue: 58/255))
-                .frame(height: 150)
-                .opacity(0.7)
-                .shadow(color: Color.black.opacity(0.5), radius: 3, x: 0, y: 5)
-                .edgesIgnoringSafeArea(.top)
+            // Display top header view
+            ZStack {
+                Rectangle()
+                    .fill(Color(red: 0, green: 146/255, blue: 58/255))
+                    .frame(height: 150)
+                    .opacity(0.7)
+                    .shadow(color: Color.black.opacity(0.5), radius: 3, x: 0, y: 5)
+                    .edgesIgnoringSafeArea(.top)
+                
+                // Display total score as the sum of all quiz scores
+                Text("Total Score: \(quizScore1 + quizScore2 + quizScore3 + quizScore4 + quizScore5 + quizScore6 + quizScore7)")
+                    .offset(y: -55)
+                    .bold()
+                    .font(.title3)
+                    .foregroundStyle(.white)
+            }
             
+            // Make a scroll view for all the learn modules
             ScrollView(.vertical) {
                 LazyVStack(spacing: 40) {
-                    // Button 1
+                    // Module 1
                     Button(action: {
+                        // When the button is pressed, showModal1 is pressed, eventually will trigger a modal
                         self.showModal1 = true
                     }) {
+                        // Module icon (stacking two ellipses)
                         VStack(spacing: -85) {
                             Ellipse()
                                 .fill(Color(red: 57/255, green: 137/255, blue: 88/255))
@@ -53,6 +66,8 @@ struct Learn: View {
                                 Ellipse()
                                     .fill(Color(red: 73/255, green: 175/255, blue: 114/255))
                                     .frame(width: 115, height: 75)
+                                
+                                // Using an icon
                                 Image(systemName: "trash.fill")
                                     .resizable()
                                     .frame(width: 50, height: 45)
@@ -67,6 +82,7 @@ struct Learn: View {
                         // Content of the first modal
                         VStack {
                             Spacer()
+                            // Main titel
                             Text("Importance of Recycling")
                                 .font(.title)
                                 .padding()
@@ -91,6 +107,8 @@ struct Learn: View {
                                 .padding()
                                 .bold()
                                 .foregroundColor(Color(red: 73/255, green: 175/255, blue: 114/255))
+                            
+                            // Question 1
                             VStack {
                                 Text("How does recycling contribute to conserving natural resources?")
                                 Button("A) Reduces need for raw material extraction.") {
@@ -109,6 +127,8 @@ struct Learn: View {
                                 .bold()
                                 .padding(.horizontal, 10)
                             }
+                            
+                            // Question 2
                             VStack {
                                 Text("What is a benefit of recycling?")
                                 Button("A) Recycling has no impact.") {
@@ -128,6 +148,8 @@ struct Learn: View {
                                 .padding(.horizontal, 10)
                             }
                             .padding()
+                            
+                            // Display user score for that quiz
                             Text("Your score: \(quizScore1)/2")
                                 .padding()
                                 .bold()
@@ -156,7 +178,6 @@ struct Learn: View {
                         }
                     }
                     .sheet(isPresented: $showModal2) {
-                        // Content of the first modal
                         VStack {
                             Spacer()
                             Text("Importance of Recycling")
@@ -174,10 +195,8 @@ struct Learn: View {
                                 .padding(.top, 5)
                                 .padding(.bottom, 20)
                             
-                            // Recycling tip for Modal 1
                             RecyclingTipView(tip: "Choose products with recyclable or minimal packaging to reduce waste.")
                         
-                            // Quiz for Modal 1
                             Text("Quiz")
                                 .font(.title2)
                                 .padding()
@@ -186,8 +205,7 @@ struct Learn: View {
                             VStack {
                                 Text("Does recycling use less energy than producing goods from virgin materials?")
                                 Button("A) Yes") {
-                                    // Update quiz score
-                                    self.quizScore1 += 1
+                                    self.quizScore2 += 1
                                 }
                                 .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
                                 .bold()
@@ -195,7 +213,6 @@ struct Learn: View {
                                 .padding(.horizontal, 10)
                                 
                                 Button("B) No") {
-                                    // Incorrect answer
                                 }
                                 .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
                                 .bold()
@@ -212,15 +229,14 @@ struct Learn: View {
                                 .padding(.horizontal, 10)
                                 
                                 Button("B) Reduces greenhouse gas emissions.") {
-                                    // Update quiz score
-                                    self.quizScore1 += 1
+                                    self.quizScore2 += 1
                                 }
                                 .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
                                 .bold()
                                 .padding(.horizontal, 10)
                             }
                             .padding()
-                            Text("Your score: \(quizScore1)/2")
+                            Text("Your score: \(quizScore2)/2")
                                 .padding()
                                 .bold()
                         }
@@ -250,7 +266,6 @@ struct Learn: View {
                     }
                     .offset(x: -100)
                     .sheet(isPresented: $showModal3) {
-                        // Content of the first modal
                         VStack {
                             Spacer()
                             Text("Importance of Recycling")
@@ -268,10 +283,8 @@ struct Learn: View {
                                 .padding(.top, 5)
                                 .padding(.bottom, 20)
                             
-                            // Recycling tip for Modal 1
                             RecyclingTipView(tip: "Opt for reusable alternatives to single-use items whenever possible, such as using a reusable water bottle instead of disposable plastic bottles. This reduces waste and lessens the demand for new materials.")
                         
-                            // Quiz for Modal 1
                             Text("Quiz")
                                 .font(.title2)
                                 .padding()
@@ -288,8 +301,7 @@ struct Learn: View {
                                 .padding(.horizontal, 10)
                                 
                                 Button("B) Diverts waste from landfills and incinerators.") {
-                                    // Update quiz score
-                                    self.quizScore1 += 1
+                                    self.quizScore3 += 1
                                 }
                                 .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
                                 .bold()
@@ -306,23 +318,22 @@ struct Learn: View {
                                 .padding(.horizontal, 10)
                                 
                                 Button("B) Recycling creates jobs in collection, processing, and manufacturing.") {
-                                    // Update quiz score
-                                    self.quizScore1 += 1
+                                    self.quizScore3 += 1
                                 }
                                 .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
                                 .bold()
                                 .padding(.horizontal, 10)
                             }
                             .padding()
-                            Text("Your score: \(quizScore1)/2")
+                            Text("Your score: \(quizScore3)/2")
                                 .padding()
                                 .bold()
                         }
-                        
                     }
-                    // Button 4
+                    
+                    // Button 4 (placeholder)
                     Button(action: {
-                        
+                        self.showModal4 = true
                     }) {
                         VStack(spacing: -85) {
                             Ellipse()
@@ -341,10 +352,74 @@ struct Learn: View {
                         }
                         
                     }
+                    .sheet(isPresented: $showModal4) {
+                        VStack {
+                            Spacer()
+                            Text("Placeholder")
+                                .font(.title)
+                                .padding()
+                                .bold()
+                                .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
+                            Text("Placeholder")
+                                .bold()
+                                .font(.title2)
+                                .padding(.top, 5)
+                                .foregroundColor(Color(red: 73/255, green: 175/255, blue: 114/255))
+                            Text("Placeholder")
+                                .padding(.horizontal, 20)
+                                .padding(.top, 5)
+                                .padding(.bottom, 20)
+                            
+                            RecyclingTipView(tip: "Placeholder")
+                            
+                            Text("Quiz")
+                                .font(.title2)
+                                .padding()
+                                .bold()
+                                .foregroundColor(Color(red: 73/255, green: 175/255, blue: 114/255))
+                            VStack {
+                                Text("Placeholder")
+                                Button("A) Placeholder") {
+                                    
+                                }
+                                .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
+                                .bold()
+                                .padding(.top, 10)
+                                .padding(.horizontal, 10)
+                                
+                                Button("B) Placeholder") {
+                                    
+                                }
+                                .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
+                                .bold()
+                                .padding(.horizontal, 10)
+                            }
+                            VStack {
+                                Text("Placeholder")
+                                Button("A) Placeholder") {
+                                    
+                                }
+                                .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
+                                .bold()
+                                .padding(.top, 10)
+                                .padding(.horizontal, 10)
+                                
+                                Button("B) Placeholder.") {
+                                }
+                                .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
+                                .bold()
+                                .padding(.horizontal, 10)
+                            }
+                            .padding()
+                            Text("Your score: \(quizScore4)/2")
+                                .padding()
+                                .bold()
+                        }
+                    }
                     
-                    // Button 5
+                    // Button 5 (placeholder)
                     Button(action: {
-                        
+                        self.showModal5 = true
                     }) {
                         VStack(spacing: -85) {
                             Ellipse()
@@ -361,12 +436,77 @@ struct Learn: View {
                                     .shadow(color: Color.black.opacity(0.3), radius: 2, x: 0, y: 4)
                             }
                         }
+                        
                     }
                     .offset(x: 100)
+                    .sheet(isPresented: $showModal5) {
+                        VStack {
+                            Spacer()
+                            Text("Placeholder")
+                                .font(.title)
+                                .padding()
+                                .bold()
+                                .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
+                            Text("Placeholder")
+                                .bold()
+                                .font(.title2)
+                                .padding(.top, 5)
+                                .foregroundColor(Color(red: 73/255, green: 175/255, blue: 114/255))
+                            Text("Placeholder")
+                                .padding(.horizontal, 20)
+                                .padding(.top, 5)
+                                .padding(.bottom, 20)
+                            
+                            RecyclingTipView(tip: "Placeholder")
+                            
+                            Text("Quiz")
+                                .font(.title2)
+                                .padding()
+                                .bold()
+                                .foregroundColor(Color(red: 73/255, green: 175/255, blue: 114/255))
+                            VStack {
+                                Text("Placeholder")
+                                Button("A) Placeholder") {
+                                    
+                                }
+                                .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
+                                .bold()
+                                .padding(.top, 10)
+                                .padding(.horizontal, 10)
+                                
+                                Button("B) Placeholder") {
+                                    
+                                }
+                                .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
+                                .bold()
+                                .padding(.horizontal, 10)
+                            }
+                            VStack {
+                                Text("Placeholder")
+                                Button("A) Placeholder") {
+                                    
+                                }
+                                .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
+                                .bold()
+                                .padding(.top, 10)
+                                .padding(.horizontal, 10)
+                                
+                                Button("B) Placeholder.") {
+                                }
+                                .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
+                                .bold()
+                                .padding(.horizontal, 10)
+                            }
+                            .padding()
+                            Text("Your score: \(quizScore5)/2")
+                                .padding()
+                                .bold()
+                        }
+                    }
                     
-                    // Button 6
+                    // Button 6 (placeholder)
                     Button(action: {
-                        
+                        self.showModal6 = true
                     }) {
                         VStack(spacing: -85) {
                             Ellipse()
@@ -376,18 +516,83 @@ struct Learn: View {
                                 Ellipse()
                                     .fill(Color(red: 73/255, green: 175/255, blue: 114/255))
                                     .frame(width: 115, height: 75)
-                                Image(systemName: "arrow.triangle.2.circlepath.circle.fill")
+                                Image(systemName: "trash.fill")
                                     .resizable()
                                     .frame(width: 50, height: 45)
                                     .foregroundColor(Color(red: 1, green: 1, blue: 1))
                                     .shadow(color: Color.black.opacity(0.3), radius: 2, x: 0, y: 4)
                             }
                         }
+                        
+                    }
+                    .sheet(isPresented: $showModal6) {
+                        VStack {
+                            Spacer()
+                            Text("Placeholder")
+                                .font(.title)
+                                .padding()
+                                .bold()
+                                .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
+                            Text("Placeholder")
+                                .bold()
+                                .font(.title2)
+                                .padding(.top, 5)
+                                .foregroundColor(Color(red: 73/255, green: 175/255, blue: 114/255))
+                            Text("Placeholder")
+                                .padding(.horizontal, 20)
+                                .padding(.top, 5)
+                                .padding(.bottom, 20)
+                            
+                            RecyclingTipView(tip: "Placeholder")
+                            
+                            Text("Quiz")
+                                .font(.title2)
+                                .padding()
+                                .bold()
+                                .foregroundColor(Color(red: 73/255, green: 175/255, blue: 114/255))
+                            VStack {
+                                Text("Placeholder")
+                                Button("A) Placeholder") {
+                                    
+                                }
+                                .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
+                                .bold()
+                                .padding(.top, 10)
+                                .padding(.horizontal, 10)
+                                
+                                Button("B) Placeholder") {
+                                    
+                                }
+                                .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
+                                .bold()
+                                .padding(.horizontal, 10)
+                            }
+                            VStack {
+                                Text("Placeholder")
+                                Button("A) Placeholder") {
+                                    
+                                }
+                                .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
+                                .bold()
+                                .padding(.top, 10)
+                                .padding(.horizontal, 10)
+                                
+                                Button("B) Placeholder.") {
+                                }
+                                .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
+                                .bold()
+                                .padding(.horizontal, 10)
+                            }
+                            .padding()
+                            Text("Your score: \(quizScore6)/2")
+                                .padding()
+                                .bold()
+                        }
                     }
                     
-                    // Button 7
+                    // Button 7 (placeholder)
                     Button(action: {
-                        
+                        self.showModal7 = true
                     }) {
                         VStack(spacing: -85) {
                             Ellipse()
@@ -406,13 +611,82 @@ struct Learn: View {
                         }
                     }
                     .offset(x: -100)
+                    .sheet(isPresented: $showModal7) {
+                        VStack {
+                            Spacer()
+                            Text("Placeholder")
+                                .font(.title)
+                                .padding()
+                                .bold()
+                                .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
+                            Text("Placeholder")
+                                .bold()
+                                .font(.title2)
+                                .padding(.top, 5)
+                                .foregroundColor(Color(red: 73/255, green: 175/255, blue: 114/255))
+                            Text("Placeholder")
+                                .padding(.horizontal, 20)
+                                .padding(.top, 5)
+                                .padding(.bottom, 20)
+                            
+                            RecyclingTipView(tip: "Placeholder")
+                            
+                            Text("Quiz")
+                                .font(.title2)
+                                .padding()
+                                .bold()
+                                .foregroundColor(Color(red: 73/255, green: 175/255, blue: 114/255))
+                            VStack {
+                                Text("Placeholder")
+                                Button("A) Placeholder") {
+                                    
+                                }
+                                .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
+                                .bold()
+                                .padding(.top, 10)
+                                .padding(.horizontal, 10)
+                                
+                                Button("B) Placeholder") {
+                                    
+                                }
+                                .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
+                                .bold()
+                                .padding(.horizontal, 10)
+                            }
+                            VStack {
+                                Text("Placeholder")
+                                Button("A) Placeholder") {
+                                    
+                                }
+                                .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
+                                .bold()
+                                .padding(.top, 10)
+                                .padding(.horizontal, 10)
+                                
+                                Button("B) Placeholder.") {
+                                }
+                                
+                                .foregroundColor(Color(red: 57/255, green: 137/255, blue: 88/255))
+                                .bold()
+                                .padding(.horizontal, 10)
+                            }
+                            .padding()
+                            Text("Your score: \(quizScore7)/2")
+                                .padding()
+                                .bold()
+                        }
+                    }
+                    
                 }
                 .offset(y: 15)
             }
             .edgesIgnoringSafeArea(.top)
             .offset(y: -90)
         }
+        // Don't use the regular IOS back button
         .navigationBarBackButtonHidden(true)
+        
+        // Custom back button
         .toolbar {
             ToolbarItem(placement: .navigationBarLeading) {
                 Button {

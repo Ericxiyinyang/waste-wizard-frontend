@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1464109C2B8F0230008D20DD /* RecyclingTipView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1464109B2B8F0230008D20DD /* RecyclingTipView.swift */; };
 		149E0BD82B85747700B986B5 /* Learn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 149E0BD72B85747700B986B5 /* Learn.swift */; };
 		F55374862B87EAD4003BA9D8 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55374832B87EAD4003BA9D8 /* CameraView.swift */; };
 		F55374872B87EAD4003BA9D8 /* TrashDetector.swift in Sources */ = {isa = PBXBuildFile; fileRef = F55374842B87EAD4003BA9D8 /* TrashDetector.swift */; };
@@ -25,6 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1464109B2B8F0230008D20DD /* RecyclingTipView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecyclingTipView.swift; sourceTree = "<group>"; };
 		149E0BD72B85747700B986B5 /* Learn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Learn.swift; sourceTree = "<group>"; };
 		F55374832B87EAD4003BA9D8 /* CameraView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		F55374842B87EAD4003BA9D8 /* TrashDetector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrashDetector.swift; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 				F55E24252B84125800CADB2B /* Waste_Wizard.entitlements */,
 				F55E24262B84125800CADB2B /* Info.plist */,
 				F55E24222B84125800CADB2B /* Preview Content */,
+				1464109B2B8F0230008D20DD /* RecyclingTipView.swift */,
 			);
 			path = "Waste Wizard";
 			sourceTree = "<group>";
@@ -181,6 +184,7 @@
 				149E0BD82B85747700B986B5 /* Learn.swift in Sources */,
 				F55E241D2B84125700CADB2B /* ContentView.swift in Sources */,
 				F55374862B87EAD4003BA9D8 /* CameraView.swift in Sources */,
+				1464109C2B8F0230008D20DD /* RecyclingTipView.swift in Sources */,
 				F55374872B87EAD4003BA9D8 /* TrashDetector.swift in Sources */,
 				F55374882B87EAD4003BA9D8 /* yolov8n.mlpackage in Sources */,
 				F553748A2B87F3C9003BA9D8 /* Scan.swift in Sources */,
